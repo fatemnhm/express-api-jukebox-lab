@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Track = require('../models/tracks.js'); 
 
+// CREATE - POST - /tracks
 router.post('/', async (req, res) => {
     try {
         const createdTrack = await Track.create(req.body);
@@ -11,6 +12,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+// READ ALL TRACKS - GET - /tracks
 router.get('/', async (req, res) => {
     try {
         const foundTracks = await Track.find();
@@ -20,6 +22,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+// DELETE - DELETE - /tracks/:trackId
 router.delete('/:trackId', async (req, res) => {
     try {
         const deletedTrack = await Track.findByIdAndDelete(req.params.trackId);
@@ -30,4 +33,3 @@ router.delete('/:trackId', async (req, res) => {
 });
 
 module.exports = router;
-
