@@ -1,12 +1,10 @@
-
 const dotenv = require('dotenv');
 dotenv.config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-// Import the controller file
-const truckRouter = require('./controllers/trucks.js');
+const trackRouter = require('./controllers/tracks.js');
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -16,7 +14,7 @@ mongoose.connection.on('connected', () => {
 
 app.use(express.json());
 
-app.use('/trucks', truckRouter);
+app.use('/tracks', trackRouter);
 
 app.listen(3000, () => {
   console.log('The express app is ready!');
